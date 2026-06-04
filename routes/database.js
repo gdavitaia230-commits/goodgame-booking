@@ -16,7 +16,7 @@ async function init() {
   if (parseInt(sc.rows[0].c) === 0) {
     for(let i=1;i<=10;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['VIP PC #'+i,'vip_pc',i]);
     for(let i=1;i<=6;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['Standard PC #'+i,'standard_pc',i]);
-    for(let i=1;i<=4;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 საერთო #'+i,'ps5_shared',i]);
+    for(let i=1;i<=4;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 á¡ááá áá #'+i,'ps5_shared',i]);
     await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 VIP','ps5_vip',1]);
   }
   const pc = await pool.query('SELECT COUNT(*) as c FROM prices');
@@ -26,12 +26,15 @@ async function init() {
   }
   const mc = await pool.query('SELECT COUNT(*) as c FROM menu_items');
   if (parseInt(mc.rows[0].c) === 0) {
-    for(const i of [['სასმელი','წყალი',1],['სასმელი','პატარა',4],['სასმელი','Doritos დიდი',6],['სასმელი','Doritos პატარა',4],['სასმელი','მიფისთხილი',3.5],['სასმელი','7DAYS კრუასანი',6],['ალკოჰოლი','Martin Rosso',10],['ალკოჰოლი','Malibu',10],['ალკოჰოლი','Compari',10],['ალკოჰოლი','Cointreau',10],['ალკოჰოლი','Jägermeister',10],['ლუდი','Heineken 0.5',9],['ლუდი','Heineken 0.3',7],['ლუდი','ქარვა 0.5',6],['Fast Food','ტოსტი',4],['Fast Food','ტოსტი ორმაგი',6]])
+    for(const i of [['á¡áá¡áááá','á¬á§ááá',1],['á¡áá¡áááá','ááá¢áá á',4],['á¡áá¡áááá','Doritos áááá',6],['á¡áá¡áááá','Doritos ááá¢áá á',4],['á¡áá¡áááá','ááá¤áá¡áá®ááá',3.5],['á¡áá¡áááá','7DAYS áá á£áá¡ááá',6],['ááááá°ááá','Martin Rosso',10],['ááááá°ááá','Malibu',10],['ááááá°ááá','Compari',10],['ááááá°ááá','Cointreau',10],['ááááá°ááá','JÃ¤germeister',10],['áá£áá','Heineken 0.5',9],['áá£áá','Heineken 0.3',7],['áá£áá','á¥áá áá 0.5',6],['Fast Food','á¢áá¡á¢á',4],['Fast Food','á¢áá¡á¢á áá áááá',6]])
       await pool.query('INSERT INTO menu_items (category,name,price) VALUES ($1,$2,$3)',i);
   }
   const stc = await pool.query('SELECT COUNT(*) as c FROM settings');
   if (parseInt(stc.rows[0].c) === 0)
     await pool.query("INSERT INTO settings (key,value) VALUES ('open_time','10:00'),('close_time','02:00'),('address','134 Pushkin St, Batumi'),('phone','+995 598 32 71 27')");
 }
+// Fix prices if wrong
+pool.query("UPDATE prices SET price_per_hour=7 WHERE station_type='vip_pc' AND mode='1v1'").catch(()=>{});
+pool.query("UPDATE prices SET price_per_hour=5 WHERE station_type='standard_pc' AND mode='1v1'").catch(()=>{});
 init().catch(console.error);
 module.exports = pool;
