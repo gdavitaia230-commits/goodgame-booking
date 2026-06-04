@@ -1,46 +1,37 @@
-const Database = require('better-sqlite3');
-const path = require('path');
-const db = new Database(path.join(__dirname, '../db/goodgame.db'));
-db.exec(`
-  PRAGMA journal_mode = WAL;
-  CREATE TABLE IF NOT EXISTS stations (id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT NOT NULL, type TEXT NOT NULL, number INTEGER NOT NULL, is_active INTEGER DEFAULT 1);
-  CREATE TABLE IF NOT EXISTS prices (id INTEGER PRIMARY KEY AUTOINCREMENT, station_type TEXT NOT NULL, mode TEXT NOT NULL, price_per_hour REAL NOT NULL);
-  CREATE TABLE IF NOT EXISTS bookings (id INTEGER PRIMARY KEY AUTOINCREMENT, booking_ref TEXT UNIQUE NOT NULL, customer_name TEXT NOT NULL, customer_phone TEXT NOT NULL, station_type TEXT NOT NULL, station_id INTEGER, mode TEXT, start_time TEXT NOT NULL, hours INTEGER NOT NULL, total_price REAL NOT NULL, payment_method TEXT NOT NULL, payment_status TEXT DEFAULT 'pending', stripe_session_id TEXT, notes TEXT, created_at TEXT DEFAULT (datetime('now')));
-  CREATE TABLE IF NOT EXISTS menu_items (id INTEGER PRIMARY KEY AUTOINCREMENT, category TEXT NOT NULL, name TEXT NOT NULL, price REAL NOT NULL, is_available INTEGER DEFAULT 1);
-  CREATE TABLE IF NOT EXISTS admins (id INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL, created_at TEXT DEFAULT (datetime('now')));
-  CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
-`);
-const sc = db.prepare('SELECT COUNT(*) as c FROM stations').get();
-if (sc.c === 0) {
-  const ins = db.prepare('INSERT INTO stations (name,type,number) VALUES (?,?,?)');
-  for(let i=1;i<=10;i++) ins.run('VIP PC #'+i,'vip_pc',i);
-  for(let i=1;i<=6;i++) ins.run('Standard PC #'+i,'standard_pc',i);
-  for(let i=1;i<=4;i++) ins.run('PS5 საერთო #'+i,'ps5_shared',i);
-  ins.run('PS5 VIP','ps5_vip',1);
+const { Pool } = require('pg');
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false
+});
+async function init() {
+  await pool.query(`
+    CREATE TABLE IF NOT EXISTS stations (id SERIAL PRIMARY KEY, name TEXT NOT NULL, type TEXT NOT NULL, number INTEGER NOT NULL, is_active INTEGER DEFAULT 1);
+    CREATE TABLE IF NOT EXISTS prices (id SERIAL PRIMARY KEY, station_type TEXT NOT NULL, mode TEXT NOT NULL, price_per_hour REAL NOT NULL);
+    CREATE TABLE IF NOT EXISTS bookings (id SERIAL PRIMARY KEY, booking_ref TEXT UNIQUE NOT NULL, customer_name TEXT NOT NULL, customer_phone TEXT NOT NULL, station_type TEXT NOT NULL, station_id INTEGER, mode TEXT, start_time TEXT NOT NULL, hours INTEGER NOT NULL, total_price REAL NOT NULL, payment_method TEXT NOT NULL, payment_status TEXT DEFAULT 'pending', stripe_session_id TEXT, notes TEXT, created_at TEXT DEFAULT to_char(now(),'YYYY-MM-DD HH24:MI:SS'));
+    CREATE TABLE IF NOT EXISTS menu_items (id SERIAL PRIMARY KEY, category TEXT NOT NULL, name TEXT NOT NULL, price REAL NOT NULL, is_available INTEGER DEFAULT 1);
+    CREATE TABLE IF NOT EXISTS admins (id SERIAL PRIMARY KEY, username TEXT UNIQUE NOT NULL, password_hash TEXT NOT NULL);
+    CREATE TABLE IF NOT EXISTS settings (key TEXT PRIMARY KEY, value TEXT NOT NULL);
+  `);
+  const sc = await pool.query('SELECT COUNT(*) as c FROM stations');
+  if (parseInt(sc.rows[0].c) === 0) {
+    for(let i=1;i<=10;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['VIP PC #'+i,'vip_pc',i]);
+    for(let i=1;i<=6;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['Standard PC #'+i,'standard_pc',i]);
+    for(let i=1;i<=4;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 საერთო #'+i,'ps5_shared',i]);
+    await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 VIP','ps5_vip',1]);
+  }
+  const pc = await pool.query('SELECT COUNT(*) as c FROM prices');
+  if (parseInt(pc.rows[0].c) === 0) {
+    for(const r of [['vip_pc','1v1',3],['standard_pc','1v1',2],['ps5_shared','1v1',6],['ps5_shared','2x2',10],['ps5_vip','1v1',10],['ps5_vip','2x2',15]])
+      await pool.query('INSERT INTO prices (station_type,mode,price_per_hour) VALUES ($1,$2,$3)',r);
+  }
+  const mc = await pool.query('SELECT COUNT(*) as c FROM menu_items');
+  if (parseInt(mc.rows[0].c) === 0) {
+    for(const i of [['სასმელი','წყალი',1],['სასმელი','პატარა',4],['სასმელი','Doritos დიდი',6],['სასმელი','Doritos პატარა',4],['სასმელი','მიფისთხილი',3.5],['სასმელი','7DAYS კრუასანი',6],['ალკოჰოლი','Martin Rosso',10],['ალკოჰოლი','Malibu',10],['ალკოჰოლი','Compari',10],['ალკოჰოლი','Cointreau',10],['ალკოჰოლი','Jägermeister',10],['ლუდი','Heineken 0.5',9],['ლუდი','Heineken 0.3',7],['ლუდი','ქარვა 0.5',6],['Fast Food','ტოსტი',4],['Fast Food','ტოსტი ორმაგი',6]])
+      await pool.query('INSERT INTO menu_items (category,name,price) VALUES ($1,$2,$3)',i);
+  }
+  const stc = await pool.query('SELECT COUNT(*) as c FROM settings');
+  if (parseInt(stc.rows[0].c) === 0)
+    await pool.query("INSERT INTO settings (key,value) VALUES ('open_time','10:00'),('close_time','02:00'),('address','134 Pushkin St, Batumi'),('phone','+995 598 32 71 27')");
 }
-const pc = db.prepare('SELECT COUNT(*) as c FROM prices').get();
-if (pc.c === 0) {
-  const ip = db.prepare('INSERT INTO prices (station_type,mode,price_per_hour) VALUES (?,?,?)');
-  ip.run('vip_pc','1v1',3); ip.run('standard_pc','1v1',2);
-  ip.run('ps5_shared','1v1',6); ip.run('ps5_shared','2x2',10);
-  ip.run('ps5_vip','1v1',10); ip.run('ps5_vip','2x2',15);
-}
-const mc = db.prepare('SELECT COUNT(*) as c FROM menu_items').get();
-if (mc.c === 0) {
-  const im = db.prepare('INSERT INTO menu_items (category,name,price) VALUES (?,?,?)');
-  im.run('სასმელი','წყალი',1); im.run('სასმელი','პატარა',4);
-  im.run('სასმელი','Doritos დიდი',6); im.run('სასმელი','Doritos პატარა',4);
-  im.run('სასმელი','მიფისთხილი',3.5); im.run('სასმელი','7DAYS კრუასანი',6);
-  im.run('ალკოჰოლი','Martin Rosso',10); im.run('ალკოჰოლი','Malibu',10);
-  im.run('ალკოჰოლი','Compari',10); im.run('ალკოჰოლი','Cointreau',10);
-  im.run('ალკოჰოლი','Jägermeister',10);
-  im.run('ლუდი','Heineken 0.5',9); im.run('ლუდი','Heineken 0.3',7); im.run('ლუდი','ქარვა 0.5',6);
-  im.run('Fast Food','ტოსტი',4); im.run('Fast Food','ტოსტი ორმაგი',6);
-}
-const stc = db.prepare('SELECT COUNT(*) as c FROM settings').get();
-if (stc.c === 0) {
-  const is2 = db.prepare('INSERT OR IGNORE INTO settings (key,value) VALUES (?,?)');
-  is2.run('open_time','10:00'); is2.run('close_time','02:00');
-  is2.run('address','134 Pushkin St, Batumi'); is2.run('phone','+995 598 32 71 27');
-}
-module.exports = db;
+init().catch(console.error);
+module.exports = pool;
