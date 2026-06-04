@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ka"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GoodGame Admin</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>*{box-sizing:border-box;margin:0;padding:0}:root{--c:#00f5ff;--p:#b400ff;--d:#060614;--d2:#0d0d2b;--card:#151530;--t:#e0e0ff;--m:#8888aa;--g:#00ff88;--r:#ff4444}
+body{font-family:'Rajdhani',sans-serif;background:var(--d);color:var(--t)}
+.lw{min-height:100vh;display:flex;align-items:center;justify-content:center}
+.lc{background:var(--card);border:1px solid rgba(0,245,255,.2);border-radius:16px;padding:2.5rem;width:100%;max-width:360px}
+.lt{font-family:'Orbitron',sans-serif;font-size:1.4rem;text-align:center;margin-bottom:2rem;color:var(--c)}
+.fg{margin-bottom:1.25rem}.fg label{display:block;font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--m);margin-bottom:6px}
+.fg input{width:100%;background:var(--d2);border:1px solid rgba(0,245,255,.2);border-radius:8px;padding:11px 14px;color:var(--t);font-family:'Rajdhani',sans-serif;font-size:15px;outline:none}
+.fg input:focus{border-color:var(--c)}
+.btn{background:linear-gradient(90deg,var(--p),var(--c));border:none;color:#fff;padding:12px 24px;border-radius:8px;font-family:'Orbitron',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;letter-spacing:1px;width:100%}
+.btn-sm{width:auto;padding:5px 12px;font-size:.72rem;border-radius:5px}
+.bd{background:var(--r);color:#fff;border:none;padding:5px 12px;border-radius:5px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:13px}
+.bs2{background:var(--g);color:var(--d);border:none;padding:5px 12px;border-radius:5px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700}
+#app{display:none;min-height:100vh}
+header{background:var(--d2);border-bottom:1px solid rgba(0,245,255,.1);padding:0 1.5rem;height:56px;display:flex;align-items:center;justify-content:space-between}
+.hlogo{font-family:'Orbitron',sans-serif;font-size:1rem;color:var(--c)}
+.logout{background:none;border:1px solid rgba(0,245,255,.3);color:var(--c);padding:6px 16px;border-radius:6px;cursor:pointer;font-family:'Rajdhani',sans-serif;font-size:13px}
+.main{display:flex;min-height:calc(100vh - 56px)}
+aside{width:190px;background:var(--d2);border-right:1px solid rgba(0,245,255,.08);padding:1rem 0;flex-shrink:0}
+.ni{display:block;padding:10px 1.5rem;font-size:14px;font-weight:600;color:var(--m);cursor:pointer;transition:all .2s;border-left:3px solid transparent}
+.ni:hover{color:var(--t);background:rgba(0,245,255,.05)}.ni.act{color:var(--c);border-left-color:var(--c);background:rgba(0,245,255,.05)}
+.cont{flex:1;padding:1.5rem;overflow:auto}
+.sec{display:none}.sec.act{display:block}
+.ptitle{font-family:'Orbitron',sans-serif;font-size:1.1rem;color:var(--t);margin-bottom:1.25rem}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem;margin-bottom:1.5rem}
+.sc{background:var(--card);border:1px solid rgba(0,245,255,.12);border-radius:10px;padding:1.25rem}
+.sc .lb{font-size:11px;color:var(--m);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px}
+.sc .vl{font-family:'Orbitron',sans-serif;font-size:1.7rem;font-weight:700;color:var(--c)}
+.tw{background:var(--card);border:1px solid rgba(0,245,255,.1);border-radius:10px;overflow:hidden}
+.th{display:flex;align-items:center;justify-content:space-between;padding:1rem 1.25rem;border-bottom:1px solid rgba(0,245,255,.1)}
+.tt{font-family:'Orbitron',sans-serif;font-size:.88rem;color:var(--c)}
+.fi{display:flex;gap:.6rem;flex-wrap:wrap}
+.fi select,.fi input{background:var(--d2);border:1px solid rgba(0,245,255,.2);border-radius:6px;padding:5px 9px;color:var(--t);font-family:'Rajdhani',sans-serif;font-size:13px;outline:none}
+table{width:100%;border-collapse:collapse}
+th{text-align:left;padding:9px 1rem;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--m);border-bottom:1px solid rgba(255,255,255,.06)}
+td{padding:9px 1rem;font-size:13px;border-bottom:1px solid rgba(255,255,255,.04)}
+tr:last-child td{border-bottom:none}tr:hover td{background:rgba(0,245,255,.02)}
+.bpaid{display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:700;background:rgba(0,255,136,.12);color:var(--g)}
+.bpend{background:rgba(255,200,0,.12);color:#ffc800;display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:700}
+.bcan{background:rgba(255,68,68,.12);color:var(--r);display:inline-block;padding:2px 7px;border-radius:3px;font-size:11px;font-weight:700}
+.eg{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem}
+.ec{background:var(--card);border:1px solid rgba(0,245,255,.1);border-radius:10px;padding:1.25rem}
+.ec h4{font-size:12px;color:var(--m);margin-bottom:.75rem}
+.er{display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem}
+.er input{flex:1;background:var(--d2);border:1px solid rgba(0,245,255,.2);border-radius:5px;padding:6px 9px;color:var(--t);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none}
+.ninp{background:var(--d2);border:1px solid rgba(0,245,255,.2);border-radius:6px;padding:7px 11px;color:var(--t);font-family:'Rajdhani',sans-serif;font-size:14px;outline:none}
+.notif{position:fixed;bottom:18px;right:18px;background:var(--card);border:1px solid var(--c);border-radius:8px;padding:.7rem 1.2rem;font-size:14px;transform:translateX(200%);transition:transform .3s;z-index:9999}
+.notif.show{transform:translateX(0)}</style></head>
+<body>
+<div class="lw" id="lp">
+  <div class="lc"><div class="lt">ADMIN PANEL</div>
+    <div class="fg"><label>Username</label><input type="text" id="lu" placeholder="admin"></div>
+    <div class="fg"><label>Password</label><input type="password" id="lp2" placeholder="••••••••" onkeydown="if(event.key==='Enter')login()"></div>
+    <button class="btn" onclick="login()">შესვლა</button>
+    <p style="text-align:center;margin-top:1rem;font-size:12px;color:var(--m)">პირველი შესვლა? <a href="#" onclick="showSetup()" style="color:var(--c)">ანგარიშის შექმნა</a></p>
+  </div>
+</div>
+<div class="lw" id="sp" style="display:none">
+  <div class="lc"><div class="lt" style="color:var(--p)">SETUP</div>
+    <div class="fg"><label>Username</label><input type="text" id="su" value="admin"></div>
+    <div class="fg"><label>Password</label><input type="password" id="sp2" placeholder="min 6 chars"></div>
+    <button class="btn" onclick="setup()">შექმნა</button>
+  </div>
+</div>
+<div id="app">
+  <header><div class="hlogo">⚡ GoodGame Admin</div><button class="logout" onclick="logout()">გასვლა</button></header>
+  <div class="main">
+    <aside>
+      <div class="ni act" onclick="showSec('dash')">📊 Dashboard</div>
+      <div class="ni" onclick="showSec('book')">📋 ჯავშნები</div>
+      <div class="ni" onclick="showSec('pri')">💰 ფასები</div>
+      <div class="ni" onclick="showSec('men')">🍔 მენიუ</div>
+      <div class="ni" onclick="showSec('sta')">🖥️ სადგურები</div>
+    </aside>
+    <div class="cont">
+      <div class="sec act" id="s-dash">
+        <div class="ptitle">Dashboard</div>
+        <div class="sg">
+          <div class="sc"><div class="lb">დღეს</div><div class="vl" id="st1">—</div></div>
+          <div class="sc"><div class="lb">შემოსავალი</div><div class="vl" id="st2">—</div></div>
+          <div class="sc"><div class="lb">მომლოდინე</div><div class="vl" id="st3" style="color:#ffc800">—</div></div>
+          <div class="sc"><div class="lb">სულ</div><div class="vl" id="st4">—</div></div>
+        </div>
+        <div class="tw"><div class="th"><div class="tt">დღევანდელი ჯავშნები</div></div>
+          <table><thead><tr><th>REF</th><th>სახელი</th><th>ტიპი</th><th>დრო</th><th>სთ</th><th>ფასი</th><th>გადახდა</th><th>სტატუსი</th></tr></thead>
+          <tbody id="dtb"></tbody></table></div>
+      </div>
+      <div class="sec" id="s-book">
+        <div class="ptitle">ჯავშნები</div>
+        <div class="tw"><div class="th"><div class="tt">ფილტრი</div>
+          <div class="fi">
+            <input type="date" id="fd" onchange="loadB()">
+            <select id="fs" onchange="loadB()"><option value="">ყველა</option><option value="paid">გადახდილი</option><option value="pending">მომლოდინე</option><option value="cancelled">გაუქმებული</option></select>
+            <select id="ft" onchange="loadB()"><option value="">ყველა ტიპი</option><option value="vip_pc">VIP PC</option><option value="standard_pc">Standard PC</option><option value="ps5_shared">PS5 საერთო</option><option value="ps5_vip">PS5 VIP</option></select>
+          </div></div>
+          <table><thead><tr><th>REF</th><th>სახელი</th><th>ტელ</th><th>ტიპი</th><th>დრო</th><th>სთ</th><th>ფასი</th><th>გადახდა</th><th>სტატუსი</th><th>მოქმედება</th></tr></thead>
+          <tbody id="btb"></tbody></table></div>
+      </div>
+      <div class="sec" id="s-pri">
+        <div class="ptitle">ფასების მართვა</div>
+        <div id="pg" class="eg"></div>
+      </div>
+      <div class="sec" id="s-men">
+        <div class="ptitle">მენიუ</div>
+        <div style="display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1rem">
+          <input class="ninp" id="nc" placeholder="კატეგორია">
+          <input class="ninp" id="nn" placeholder="სახელი">
+          <input class="ninp" id="np" type="number" placeholder="ფასი" style="width:90px">
+          <button class="btn btn-sm" onclick="addM()">+ დამატება</button>
+        </div>
+        <div class="tw"><table><thead><tr><th>კატეგ.</th><th>სახელი</th><th>ფასი</th><th>ხელმისაწვდომი</th><th>წაშლა</th></tr></thead>
+        <tbody id="mtb"></tbody></table></div>
+      </div>
+      <div class="sec" id="s-sta">
+        <div class="ptitle">სადგურები</div>
+        <div class="tw"><table><thead><tr><th>სახელი</th><th>ტიპი</th><th>#</th><th>სტატუსი</th><th>მოქმედება</th></tr></thead>
+        <tbody id="stb"></tbody></table></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="notif" id="notif"></div>
+<script>
+let TK=localStorage.getItem('gg_tk');
+const TL={vip_pc:'VIP PC',standard_pc:'Standard PC',ps5_shared:'PS5 საერთო',ps5_vip:'PS5 VIP'};
+const SL={paid:'გადახდილი',pending:'მომლოდინე',cancelled:'გაუქმებული'};
+function api(p,o={}){return fetch('/api/admin'+p,{...o,headers:{'Content-Type':'application/json','Authorization':'Bearer '+TK,...(o.headers||{})}}).then(r=>r.json());}
+function ntf(m){const n=document.getElementById('notif');n.textContent=m;n.classList.add('show');setTimeout(()=>n.classList.remove('show'),2500);}
+function showSetup(){document.getElementById('lp').style.display='none';document.getElementById('sp').style.display='flex';}
+async function setup(){
+  const u=document.getElementById('su').value,p=document.getElementById('sp2').value;
+  const r=await fetch('/api/admin/setup',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+  const d=await r.json();
+  if(d.success){document.getElementById('sp').style.display='none';document.getElementById('lp').style.display='flex';ntf('შეიქმნა!');}
+  else ntf(d.error||'შეცდომა');
+}
+async function login(){
+  const u=document.getElementById('lu').value,p=document.getElementById('lp2').value;
+  const r=await fetch('/api/admin/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({username:u,password:p})});
+  const d=await r.json();
+  if(d.token){TK=d.token;localStorage.setItem('gg_tk',TK);showApp();}else ntf(d.error||'შეცდომა');
+}
+function logout(){localStorage.removeItem('gg_tk');TK=null;document.getElementById('app').style.display='none';document.getElementById('lp').style.display='flex';}
+function showApp(){document.getElementById('lp').style.display='none';document.getElementById('sp').style.display='none';document.getElementById('app').style.display='block';loadDash();}
+if(TK)showApp();
+function showSec(n){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('act'));
+  document.querySelectorAll('.ni').forEach(i=>i.classList.remove('act'));
+  document.getElementById('s-'+n).classList.add('act');
+  event.currentTarget.classList.add('act');
+  if(n==='dash')loadDash();if(n==='book')loadB();if(n==='pri')loadP();if(n==='men')loadM();if(n==='sta')loadS();
+}
+function sb(s){return '<span class="b'+s+'">'+(SL[s]||s)+'</span>';}
+async function loadDash(){
+  const st=await api('/stats');
+  document.getElementById('st1').textContent=st.today_bookings;
+  document.getElementById('st2').textContent=st.today_revenue.toFixed(2)+' ₾';
+  document.getElementById('st3').textContent=st.pending_bookings;
+  document.getElementById('st4').textContent=st.total_bookings;
+  const today=new Date().toISOString().split('T')[0];
+  const bs=await api('/bookings?date='+today);
+  document.getElementById('dtb').innerHTML=bs.map(b=>'<tr><td style="font-family:Orbitron,sans-serif;font-size:11px;color:var(--c)">'+b.booking_ref+'</td><td>'+b.customer_name+'</td><td>'+TL[b.station_type]+'</td><td>'+b.start_time.slice(11,16)+'</td><td>'+b.hours+'</td><td style="color:var(--c)">'+b.total_price+' ₾</td><td>'+(b.payment_method==='card'?'💳':'💵')+'</td><td>'+sb(b.payment_status)+'</td></tr>').join('')||'<tr><td colspan="8" style="text-align:center;color:var(--m);padding:2rem">დღეს ჯავშანი არ არის</td></tr>';
+}
+async function loadB(){
+  const fd=document.getElementById('fd').value,fs=document.getElementById('fs').value,ft=document.getElementById('ft').value;
+  let u='/bookings?';if(fd)u+='date='+fd+'&';if(fs)u+='status='+fs+'&';if(ft)u+='type='+ft+'&';
+  const bs=await api(u);
+  document.getElementById('btb').innerHTML=bs.map(b=>'<tr><td style="font-family:Orbitron,sans-serif;font-size:11px;color:var(--c)">'+b.booking_ref+'</td><td>'+b.customer_name+'</td><td style="font-size:12px">'+b.customer_phone+'</td><td>'+(TL[b.station_type]||b.station_type)+'</td><td style="font-size:12px">'+b.start_time+'</td><td>'+b.hours+'</td><td style="color:var(--c)">'+b.total_price+' ₾</td><td>'+(b.payment_method==='card'?'💳':'💵')+'</td><td>'+sb(b.payment_status)+'</td><td>'+(b.payment_status==='pending'?'<button class="bs2" onclick="updB('+b.id+','paid')">✓</button>':'')+(b.payment_status!=='cancelled'?'<button class="bd" onclick="updB('+b.id+','cancelled')" style="margin-left:4px">✗</button>':'')+'</td></tr>').join('')||'<tr><td colspan="10" style="text-align:center;color:var(--m);padding:2rem">ვერ მოიძებნა</td></tr>';
+}
+async function updB(id,s){await api('/bookings/'+id,{method:'PATCH',body:JSON.stringify({payment_status:s})});loadB();ntf('განახლდა!');}
+async function loadP(){
+  const ps=await api('/prices');
+  const lb={vip_pc:'VIP PC',standard_pc:'Standard PC',ps5_shared:'PS5 საერთო',ps5_vip:'PS5 VIP'};
+  document.getElementById('pg').innerHTML=ps.map(p=>'<div class="ec"><h4>'+(lb[p.station_type]||p.station_type)+' — '+p.mode+'</h4><div class="er"><input type="number" id="pr'+p.id+'" value="'+p.price_per_hour+'" step="0.5"><span style="color:var(--m);font-size:13px">₾/სთ</span><button class="bs2" onclick="saveP('+p.id+')">შენახვა</button></div></div>').join('');
+}
+async function saveP(id){await api('/prices/'+id,{method:'PATCH',body:JSON.stringify({price_per_hour:parseFloat(document.getElementById('pr'+id).value)})});ntf('ფასი განახლდა!');}
+async function loadM(){
+  const ms=await api('/menu');
+  document.getElementById('mtb').innerHTML=ms.map(i=>'<tr><td>'+i.category+'</td><td>'+i.name+'</td><td><input type="number" value="'+i.price+'" step="0.5" onchange="updM('+i.id+',this.value)" style="background:var(--d2);border:1px solid rgba(0,245,255,.2);border-radius:4px;padding:4px 7px;color:var(--t);font-family:Rajdhani,sans-serif;width:75px;outline:none"></td><td><input type="checkbox" '+(i.is_available?'checked':'')+' onchange="togM('+i.id+',this.checked)"></td><td><button class="bd" onclick="delM('+i.id+')">წაშლა</button></td></tr>').join('');
+}
+async function addM(){
+  const c=document.getElementById('nc').value,n=document.getElementById('nn').value,p=parseFloat(document.getElementById('np').value);
+  if(!c||!n||!p)return ntf('შეავსე ველები');
+  await api('/menu',{method:'POST',body:JSON.stringify({category:c,name:n,price:p})});
+  document.getElementById('nn').value='';document.getElementById('np').value='';loadM();ntf('დამატებულია!');
+}
+async function updM(id,p){await api('/menu/'+id,{method:'PATCH',body:JSON.stringify({price:parseFloat(p)})});ntf('განახლდა!');}
+async function togM(id,v){await api('/menu/'+id,{method:'PATCH',body:JSON.stringify({is_available:v?1:0})});}
+async function delM(id){if(!confirm('წაშლა?'))return;await api('/menu/'+id,{method:'DELETE'});loadM();ntf('წაიშალა!');}
+async function loadS(){
+  const ss=await api('/stations');
+  document.getElementById('stb').innerHTML=ss.map(s=>'<tr><td>'+s.name+'</td><td>'+(TL[s.type]||s.type)+'</td><td>'+s.number+'</td><td>'+(s.is_active?'<span style="color:var(--g)">✓ აქტიური</span>':'<span style="color:var(--r)">✗ გათიშული</span>')+'</td><td><button class="'+(s.is_active?'bd':'bs2')+'" onclick="togS('+s.id+','+(s.is_active?0:1)+')">'+(s.is_active?'გათიშვა':'ჩართვა')+'</button></td></tr>').join('');
+}
+async function togS(id,v){await api('/stations/'+id,{method:'PATCH',body:JSON.stringify({is_active:v})});loadS();ntf('განახლდა!');}
+</script></body></html>
