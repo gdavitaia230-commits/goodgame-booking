@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GoodGame — Cyber Club Batumi</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--cyan:#00f5ff;--purple:#b400ff;--dark:#060614;--dark2:#0d0d2b;--card:#151530;--text:#e0e0ff;--muted:#8888aa}
+body{font-family:'Rajdhani',sans-serif;background:var(--dark);color:var(--text)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;height:64px;display:flex;align-items:center;padding:0 2rem;background:rgba(6,6,20,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,245,255,.1)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--purple),var(--cyan));border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'Orbitron',sans-serif;font-weight:900;font-size:13px;color:#fff}
+.logo-text{font-family:'Orbitron',sans-serif;font-size:17px;font-weight:700;background:linear-gradient(90deg,var(--purple),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.nav-links{display:flex;gap:1.5rem;margin-left:2.5rem}
+.nav-links a{color:var(--text);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:1px;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--cyan)}
+.nav-book{margin-left:auto;background:linear-gradient(90deg,var(--purple),var(--cyan));border:none;color:#fff;padding:9px 22px;border-radius:6px;font-family:'Rajdhani',sans-serif;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.hero{min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;padding-top:64px;background:radial-gradient(ellipse at center,rgba(180,0,255,.15),transparent 60%),var(--dark)}
+.hero-sub{font-family:'Orbitron',sans-serif;font-size:12px;letter-spacing:6px;color:var(--cyan);margin-bottom:1rem}
+h1{font-family:'Orbitron',sans-serif;font-size:clamp(3rem,10vw,7rem);font-weight:900;line-height:1;margin-bottom:1.5rem}
+.g1{color:var(--purple)}.g2{color:var(--cyan)}
+.btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-p{background:linear-gradient(90deg,var(--purple),var(--cyan));border:none;color:#fff;padding:14px 32px;border-radius:8px;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+.btn-o{background:transparent;border:1px solid var(--cyan);color:var(--cyan);padding:14px 32px;border-radius:8px;font-family:'Rajdhani',sans-serif;font-size:16px;font-weight:700;cursor:pointer;letter-spacing:1px;text-transform:uppercase}
+section{padding:5rem 2rem}.container{max-width:1100px;margin:0 auto}
+.sec-title{font-family:'Orbitron',sans-serif;font-size:clamp(1.5rem,4vw,2.5rem);font-weight:700;text-align:center;margin-bottom:3rem}
+.accent{color:var(--cyan)}
+.stats{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);border-bottom:1px solid rgba(0,245,255,.1);padding:3rem 2rem}
+.stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:2rem;text-align:center}
+.sn{font-family:'Orbitron',sans-serif;font-size:2.5rem;font-weight:900;color:var(--cyan)}
+.sl{font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+.pc-grid,.ps5-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem}
+.card{background:var(--card);border:1px solid rgba(0,245,255,.12);border-radius:12px;padding:1.5rem;transition:transform .2s,border-color .2s}
+.card:hover{transform:translateY(-4px);border-color:var(--cyan)}
+.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem}
+.bv{background:var(--purple);color:#fff}.bs{background:var(--cyan);color:var(--dark)}
+.ct{font-family:'Orbitron',sans-serif;font-size:1rem;font-weight:700;margin-bottom:.4rem}
+.cm{font-size:13px;color:var(--muted);margin-bottom:1rem}
+.specs{display:grid;gap:5px}
+.sr{display:flex;justify-content:space-between;font-size:13px;padding:5px 0;border-bottom:1px solid rgba(255,255,255,.04)}
+.sl2{color:var(--muted)}.sv{color:var(--text);font-weight:600;text-align:right}
+.pf{margin-top:1rem;padding-top:1rem;border-top:1px solid rgba(0,245,255,.15);display:flex;align-items:center;justify-content:space-between}
+.pt{font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cyan)}
+.ps{font-size:12px;color:var(--muted)}
+.modes{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem}
+.mode{background:var(--dark2);border-radius:8px;padding:12px;text-align:center}
+.mn{font-size:12px;color:var(--muted);margin-bottom:4px}
+.mp{font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;color:var(--cyan)}
+.cnt{display:inline-flex;align-items:center;background:rgba(180,0,255,.2);color:var(--purple);padding:3px 10px;border-radius:4px;font-size:12px;font-weight:700;margin-bottom:1rem}
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem}
+.mc2{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:1.5rem}
+.mct{font-family:'Orbitron',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(0,245,255,.2)}
+.mi{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
+.mi:last-child{border:none}
+.mip{font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;color:var(--purple)}
+.booking-wrap{max-width:660px;margin:0 auto}
+.bcard{background:var(--card);border:1px solid rgba(0,245,255,.2);border-radius:16px;padding:2rem}
+.fg{margin-bottom:1.25rem}
+.fg label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
+.fg input,.fg select{width:100%;background:var(--dark2);border:1px solid rgba(0,245,255,.2);border-radius:8px;padding:11px 15px;color:var(--text);font-family:'Rajdhani',sans-serif;font-size:15px;outline:none}
+.fg input:focus,.fg select:focus{border-color:var(--cyan)}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.psum{background:var(--dark);border:1px solid rgba(0,245,255,.15);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem}
+.pr{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;color:var(--muted)}
+.ptot{display:flex;justify-content:space-between;font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;border-top:1px solid rgba(0,245,255,.2);padding-top:10px;margin-top:8px}
+.ptot .am{color:var(--cyan)}
+.popts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
+.popt{background:var(--dark2);border:2px solid rgba(0,245,255,.15);border-radius:10px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s}
+.popt:hover,.popt.sel{border-color:var(--cyan);background:rgba(0,245,255,.08)}
+.popt input{display:none}
+.pi{font-size:1.4rem;margin-bottom:4px}
+.pl{font-size:13px;font-weight:600;letter-spacing:1px}
+.sub-btn{width:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border:none;color:#fff;padding:16px;border-radius:10px;font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:2px;text-transform:uppercase}
+.sub-btn:disabled{opacity:.5;cursor:not-allowed}
+.succ{display:none;text-align:center;padding:3rem 1rem}
+.si{font-size:4rem;margin-bottom:1rem}
+.sref{font-family:'Orbitron',sans-serif;font-size:1.5rem;color:var(--cyan);margin:1rem 0}
+.contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;text-align:center}
+.cc{background:var(--card);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:2rem}
+.ci{font-size:2rem;margin-bottom:.75rem}
+.cl{font-size:12px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem}
+.cv{font-size:1rem;font-weight:600;color:var(--cyan)}
+.notif{position:fixed;top:76px;right:16px;z-index:9999;background:var(--card);border:1px solid var(--cyan);border-radius:10px;padding:.9rem 1.4rem;font-size:14px;transform:translateX(200%);transition:transform .3s;max-width:280px}
+.notif.show{transform:translateX(0)}.notif.err{border-color:#f44}
+footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-align:center;padding:2rem;font-size:13px;color:var(--muted)}
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo"><div class="logo-icon">GG</div><span class="logo-text">Good Game</span></a>
+  <div class="nav-links">
+    <a href="#computers">კომპიუტერები</a>
+    <a href="#playstation">PLAYSTATION</a>
+    <a href="#menu">მენიუ</a>
+    <a href="#booking">ჯავშანი</a>
+    <a href="#contact">კონტაქტი</a>
+  </div>
+  <button class="nav-book" onclick="goto('booking')">დაჯავშნე</button>
+</nav>
+
+<section class="hero">
+  <div>
+    <p class="hero-sub">CYBER CLUB</p>
+    <h1><span class="g1">GOOD</span><span class="g2">GAME</span></h1>
+    <div class="btns">
+      <button class="btn-p" onclick="goto('booking')">დაჯავშნე ახლავე</button>
+      <button class="btn-o" onclick="goto('computers')">ნახე ტექნიკა</button>
+    </div>
+  </div>
+</section>
+
+<div class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="sn">16</div><div class="sl">კომპიუტერი</div></div>
+      <div><div class="sn">5</div><div class="sl">PS5</div></div>
+      <div><div class="sn">24/7</div><div class="sl">ღია</div></div>
+      <div><div class="sn">Batumi</div><div class="sl">134 Pushkin St</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="computers">
+  <div class="container">
+    <h2 class="sec-title">ჩვენი <span class="accent">კომპიუტერები</span></h2>
+    <div class="pc-grid">
+      <div class="card">
+        <span class="badge bv">VIP</span>
+        <div class="ct">VIP კომპიუტერი</div>
+        <div class="cm">10 ერთეული • 2 ოთახი × 5 PC</div>
+        <div class="specs">
+          <div class="sr"><span class="sl2">პროცესორი</span><span class="sv">Intel i5-13400F 4.60GHz</span></div>
+          <div class="sr"><span class="sl2">ვიდეობარათი</span><span class="sv">RTX 4060 8GB</span></div>
+          <div class="sr"><span class="sl2">ოპერატიული</span><span class="sv">DDR5 16GB 5600MHz</span></div>
+          <div class="sr"><span class="sl2">მონიტორი</span><span class="sv">SAMSUNG 27" 240Hz</span></div>
+          <div class="sr"><span class="sl2">SSD</span><span class="sv">512GB NVMe</span></div>
+        </div>
+        <div class="pf">
+          <div><div class="pt">3 ₾/სთ</div><div class="ps">ერთი ადგილი</div></div>
+          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('vip_pc')">დაჯავშნე</button>
+        </div>
+      </div>
+      <div class="card">
+        <span class="badge bs">STANDARD</span>
+        <div class="ct">Standard PC</div>
+        <div class="cm">6 ერთეული • საერთო სივრცე</div>
+        <div class="specs">
+          <div class="sr"><span class="sl2">პროცესორი</span><span class="sv">Intel i5-12400F</span></div>
+          <div class="sr"><span class="sl2">ვიდეობარათი</span><span class="sv">GTX 1660 Super 6GB</span></div>
+          <div class="sr"><span class="sl2">ოპერატიული</span><span class="sv">DDR4 16GB</span></div>
+          <div class="sr"><span class="sl2">მონიტორი</span><span class="sv">24" 144Hz</span></div>
+          <div class="sr"><span class="sl2">SSD</span><span class="sv">256GB NVMe</span></div>
+        </div>
+        <div class="pf">
+          <div><div class="pt">2 ₾/სთ</div><div class="ps">ერთი ადგილი</div></div>
+          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('standard_pc')">დაჯავშნე</button>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;color:var(--muted);font-size:14px">🎮 CS2 · CS 1.6 · Fortnite · Dota 2 · Valorant · PUBG</p>
+  </div>
+</section>
+
+<section id="playstation" style="background:var(--dark2)">
+  <div class="container">
+    <h2 class="sec-title">PLAYSTATION <span class="accent">5</span></h2>
+    <div class="ps5-grid">
+      <div class="card">
+        <div class="ct">საერთო სივრცე</div>
+        <div class="cnt">4 PS5</div>
+        <div class="modes">
+          <div class="mode"><div class="mn">1V1</div><div class="mp">6 ₾/სთ</div></div>
+          <div class="mode"><div class="mn">2×2</div><div class="mp">10 ₾/სთ</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">🎮 FIFA 24/25/26 · UFC 4 · UFC 5 · MK · GTA 5</p>
+        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_shared')">დაჯავშნე</button>
+      </div>
+      <div class="card" style="border-color:rgba(0,245,255,.25)">
+        <div class="ct">VIP ოთახი</div>
+        <div class="cnt" style="background:rgba(0,245,255,.12);color:var(--cyan)">1 PS5 <span style="background:var(--purple);color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;margin-left:4px">VIP</span></div>
+        <div class="modes">
+          <div class="mode"><div class="mn">1V1</div><div class="mp">10 ₾/სთ</div></div>
+          <div class="mode"><div class="mn">2×2</div><div class="mp">15 ₾/სთ</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">🎮 NBA · MK · UFC 4/5 · FIFA 25/26 · PES</p>
+        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_vip')">დაჯავშნე</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="container">
+    <h2 class="sec-title">მე<span class="accent">ნიუ</span></h2>
+    <div id="menu-grid" class="menu-grid"><div style="grid-column:1/-1;text-align:center;color:var(--muted)">იტვირთება...</div></div>
+  </div>
+</section>
+
+<section id="booking" style="background:var(--dark2)">
+  <div class="container">
+    <h2 class="sec-title">ონლაინ <span class="accent">ჯავშანი</span></h2>
+    <div class="booking-wrap">
+      <div class="bcard" id="bform">
+        <div class="fr">
+          <div class="fg"><label>სახელი</label><input id="bn" placeholder="შენი სახელი"></div>
+          <div class="fg"><label>ტელეფონი</label><input id="bp" placeholder="+995 5XX XX XX XX"></div>
+        </div>
+        <div class="fg"><label>ტიპი</label>
+          <select id="bt" onchange="upd()">
+            <option value="">აირჩიე...</option>
+            <option value="vip_pc">VIP კომპიუტერი — 3 ₾/სთ</option>
+            <option value="standard_pc">Standard PC — 2 ₾/სთ</option>
+            <option value="ps5_shared">PS5 საერთო სივრცე</option>
+            <option value="ps5_vip">PS5 VIP ოთახი</option>
+          </select>
+        </div>
+        <div class="fg" id="mg" style="display:none"><label>რეჟიმი</label>
+          <select id="bm" onchange="upd()"><option value="1v1">1V1</option><option value="2x2">2×2</option></select>
+        </div>
+        <div class="fr">
+          <div class="fg"><label>თარიღი</label><input type="date" id="bd" onchange="upd()"></div>
+          <div class="fg"><label>დაწყება</label><input type="time" id="bti" onchange="upd()"></div>
+        </div>
+        <div class="fg"><label>საათები</label>
+          <select id="bh" onchange="upd()">
+            <option value="1">1 საათი</option><option value="2">2 საათი</option>
+            <option value="3">3 საათი</option><option value="4">4 საათი</option>
+            <option value="5">5 საათი</option><option value="6">6 საათი</option>
+          </select>
+        </div>
+        <div class="psum" id="ps2" style="display:none">
+          <div class="pr"><span>ტიპი</span><span id="pst">—</span></div>
+          <div class="pr"><span>დრო</span><span id="psd">—</span></div>
+          <div class="pr"><span>ხანგრძლივობა</span><span id="psh">—</span></div>
+          <div class="ptot"><span>სულ</span><span class="am" id="psa">0 ₾</span></div>
+        </div>
+        <div style="margin-bottom:1rem">
+          <label style="display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">გადახდა</label>
+          <div class="popts">
+            <label class="popt sel" id="pc2"><input type="radio" name="pay" value="card" checked>
+              <div class="pi">💳</div><div class="pl">ბარათი</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">ავტო დადასტურება</div>
+            </label>
+            <label class="popt" id="pca"><input type="radio" name="pay" value="cash">
+              <div class="pi">💵</div><div class="pl">ნაღდი</div>
+              <div style="font-size:11px;color:var(--muted);margin-top:2px">ადგილზე გადახდა</div>
+            </label>
+          </div>
+        </div>
+        <button class="sub-btn" onclick="sub()">დაჯავშნე ახლავე</button>
+      </div>
+      <div class="succ" id="succ">
+        <div class="si">✅</div>
+        <h3 style="font-family:'Orbitron',sans-serif;font-size:1.5rem">ჯავშანი დადასტურდა!</h3>
+        <div class="sref" id="sref"></div>
+        <p style="color:var(--muted);margin-top:1rem">შეინახე ეს კოდი!</p>
+        <button class="btn-o" style="margin-top:1.5rem" onclick="rst()">ახალი ჯავშანი</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <h2 class="sec-title">კონ<span class="accent">ტაქტი</span></h2>
+    <div class="contact-grid">
+      <div class="cc"><div class="ci">📞</div><div class="cl">ტელეფონი</div><div class="cv">+995 598 32 71 27</div></div>
+      <div class="cc"><div class="ci">📍</div><div class="cl">მისამართი</div><div class="cv">134 Pushkin St, Batumi</div></div>
+      <div class="cc"><div class="ci">🕐</div><div class="cl">სამუშაო საათები</div><div class="cv">10:00 — 02:00</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>© 2025 GoodGame Cyber Club · Batumi</footer>
+<div class="notif" id="notif"></div>
+
+<script>
+const P={vip_pc:{n:'VIP კომპიუტერი','1v1':3},standard_pc:{n:'Standard PC','1v1':2},ps5_shared:{n:'PS5 საერთო','1v1':6,'2x2':10},ps5_vip:{n:'PS5 VIP','1v1':10,'2x2':15}};
+document.getElementById('bd').value=new Date().toISOString().split('T')[0];
+document.getElementById('bti').value='12:00';
+async function loadMenu(){
+  try{
+    const r=await fetch('/api/menu');const items=await r.json();
+    const cats={};items.forEach(i=>{if(!cats[i.category])cats[i.category]=[];cats[i.category].push(i);});
+    document.getElementById('menu-grid').innerHTML=Object.entries(cats).map(([c,is])=>'<div class="mc2"><div class="mct">'+c+'</div>'+is.map(i=>'<div class="mi"><span>'+i.name+'</span><span class="mip">'+i.price.toFixed(2)+' ₾</span></div>').join('')+'</div>').join('');
+  }catch(e){document.getElementById('menu-grid').innerHTML='<div style="color:var(--muted);text-align:center">ვერ ჩაიტვირთა</div>';}
+}
+loadMenu();
+document.querySelectorAll('.popt').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.popt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');}));
+function upd(){
+  const t=document.getElementById('bt').value,h=parseInt(document.getElementById('bh').value);
+  const d=document.getElementById('bd').value,ti=document.getElementById('bti').value;
+  const ps=t==='ps5_shared'||t==='ps5_vip';
+  document.getElementById('mg').style.display=ps?'block':'none';
+  if(!t){document.getElementById('ps2').style.display='none';return;}
+  const m=ps?document.getElementById('bm').value:'1v1';
+  const pr=P[t],pph=pr[m]||pr['1v1'],tot=pph*h;
+  document.getElementById('pst').textContent=pr.n+(ps?' ('+m+')':'');
+  document.getElementById('psd').textContent=d&&ti?d+' '+ti:'—';
+  document.getElementById('psh').textContent=h+' საათი × '+pph+' ₾';
+  document.getElementById('psa').textContent=tot+' ₾';
+  document.getElementById('ps2').style.display='block';
+}
+function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+function qb(t){document.getElementById('bt').value=t;upd();goto('booking');}
+async function sub(){
+  const n=document.getElementById('bn').value.trim(),p=document.getElementById('bp').value.trim();
+  const t=document.getElementById('bt').value,d=document.getElementById('bd').value,ti=document.getElementById('bti').value;
+  const h=document.getElementById('bh').value,pay=document.querySelector('input[name="pay"]:checked').value;
+  const ps=t==='ps5_shared'||t==='ps5_vip',m=ps?document.getElementById('bm').value:'1v1';
+  if(!n||!p||!t||!d||!ti){ntf('შეავსე ყველა ველი!','err');return;}
+  const btn=document.querySelector('.sub-btn');btn.disabled=true;btn.textContent='მუშავდება...';
+  const body={customer_name:n,customer_phone:p,station_type:t,mode:m,start_time:d+' '+ti,hours:parseInt(h),payment_method:pay};
+  try{
+    if(pay==='card'){
+      const r=await fetch('/api/bookings/stripe-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      const data=await r.json();
+      if(data.url)window.location.href=data.url;
+      else ntf(data.error||'შეცდომა','err');
+    }else{
+      const r=await fetch('/api/bookings/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+      const data=await r.json();
+      if(data.success){document.getElementById('bform').style.display='none';document.getElementById('succ').style.display='block';document.getElementById('sref').textContent=data.booking_ref;}
+      else ntf(data.error||'შეცდომა','err');
+    }
+  }catch(e){ntf('სერვერის შეცდომა','err');}
+  btn.disabled=false;btn.textContent='დაჯავშნე ახლავე';
+}
+function rst(){document.getElementById('bform').style.display='block';document.getElementById('succ').style.display='none';}
+function ntf(msg,type=''){const n=document.getElementById('notif');n.textContent=msg;n.className='notif '+(type==='err'?'err':'')+' show';setTimeout(()=>n.classList.remove('show'),3500);}
+if(window.location.pathname==='/booking-success'){
+  const ref=new URLSearchParams(window.location.search).get('ref');
+  if(ref){goto('booking');document.getElementById('bform').style.display='none';document.getElementById('succ').style.display='block';document.getElementById('sref').textContent=ref;}
+}
+</script>
+</body>
+</html>
