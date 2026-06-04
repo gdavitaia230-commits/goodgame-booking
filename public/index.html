@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GoodGame â Cyber Club Batumi</title>
+<title>GoodGame — Cyber Club Batumi</title>
 <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -55,7 +55,7 @@ section{padding:5rem 2rem}.container{max-width:1100px;margin:0 auto}
 .mi{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid rgba(255,255,255,.04);font-size:14px}
 .mi:last-child{border:none}
 .mip{font-family:'Orbitron',sans-serif;font-size:.82rem;font-weight:700;color:var(--purple)}
-.booking-wrap{max-width:660px;margin:0 auto}
+.bwrap{max-width:660px;margin:0 auto}
 .bcard{background:var(--card);border:1px solid rgba(0,245,255,.2);border-radius:16px;padding:2rem}
 .fg{margin-bottom:1.25rem}
 .fg label{display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:7px}
@@ -63,15 +63,9 @@ section{padding:5rem 2rem}.container{max-width:1100px;margin:0 auto}
 .fg input:focus,.fg select:focus{border-color:var(--cyan)}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
 .psum{background:var(--dark);border:1px solid rgba(0,245,255,.15);border-radius:10px;padding:1.25rem;margin-bottom:1.5rem}
-.pr{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;color:var(--muted)}
+.pr2{display:flex;justify-content:space-between;font-size:14px;margin-bottom:8px;color:var(--muted)}
 .ptot{display:flex;justify-content:space-between;font-family:'Orbitron',sans-serif;font-size:1.2rem;font-weight:700;border-top:1px solid rgba(0,245,255,.2);padding-top:10px;margin-top:8px}
 .ptot .am{color:var(--cyan)}
-.popts{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1.5rem}
-.popt{background:var(--dark2);border:2px solid rgba(0,245,255,.15);border-radius:10px;padding:1rem;text-align:center;cursor:pointer;transition:all .2s}
-.popt:hover,.popt.sel{border-color:var(--cyan);background:rgba(0,245,255,.08)}
-.popt input{display:none}
-.pi{font-size:1.4rem;margin-bottom:4px}
-.pl{font-size:13px;font-weight:600;letter-spacing:1px}
 .sub-btn{width:100%;background:linear-gradient(90deg,var(--purple),var(--cyan));border:none;color:#fff;padding:16px;border-radius:10px;font-family:'Orbitron',sans-serif;font-size:.95rem;font-weight:700;cursor:pointer;letter-spacing:2px;text-transform:uppercase}
 .sub-btn:disabled{opacity:.5;cursor:not-allowed}
 .succ{display:none;text-align:center;padding:3rem 1rem}
@@ -91,13 +85,13 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
 <nav>
   <a href="/" class="logo"><div class="logo-icon">GG</div><span class="logo-text">Good Game</span></a>
   <div class="nav-links">
-    <a href="#computers">áááááá£á¢áá ááá</a>
+    <a href="#computers">კომპიუტერები</a>
     <a href="#playstation">PLAYSTATION</a>
-    <a href="#menu">ááááá£</a>
-    <a href="#booking">á¯ááá¨ááá</a>
-    <a href="#contact">áááá¢áá¥á¢á</a>
+    <a href="#menu">მენიუ</a>
+    <a href="#booking">ჯავშანი</a>
+    <a href="#contact">კონტაქტი</a>
   </div>
-  <button class="nav-book" onclick="goto('booking')">ááá¯ááá¨áá</button>
+  <button class="nav-book" onclick="goto('booking')">დაჯავშნე</button>
 </nav>
 
 <section class="hero">
@@ -105,8 +99,8 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
     <p class="hero-sub">CYBER CLUB</p>
     <h1><span class="g1">GOOD</span><span class="g2">GAME</span></h1>
     <div class="btns">
-      <button class="btn-p" onclick="goto('booking')">ááá¯ááá¨áá áá®áááá</button>
-      <button class="btn-o" onclick="goto('computers')">ááá®á á¢áá¥áááá</button>
+      <button class="btn-p" onclick="goto('booking')">დაჯავშნე ახლავე</button>
+      <button class="btn-o" onclick="goto('computers')">ნახე ტექნიკა</button>
     </div>
   </div>
 </section>
@@ -114,9 +108,9 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
 <div class="stats">
   <div class="container">
     <div class="stats-grid">
-      <div><div class="sn">16</div><div class="sl">áááááá£á¢áá á</div></div>
+      <div><div class="sn">16</div><div class="sl">კომპიუტერი</div></div>
       <div><div class="sn">5</div><div class="sl">PS5</div></div>
-      <div><div class="sn">24/7</div><div class="sl">á¦áá</div></div>
+      <div><div class="sn">24/7</div><div class="sl">ღია</div></div>
       <div><div class="sn">Batumi</div><div class="sl">134 Pushkin St</div></div>
     </div>
   </div>
@@ -124,42 +118,42 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
 
 <section id="computers">
   <div class="container">
-    <h2 class="sec-title">á©áááá <span class="accent">áááááá£á¢áá ááá</span></h2>
+    <h2 class="sec-title">ჩვენი <span class="accent">კომპიუტერები</span></h2>
     <div class="pc-grid">
       <div class="card">
         <span class="badge bv">VIP</span>
-        <div class="ct">VIP áááááá£á¢áá á</div>
-        <div class="cm">10 áá ááá£áá â¢ 2 áááá®á Ã 5 PC</div>
+        <div class="ct">VIP კომპიუტერი</div>
+        <div class="cm">10 ერთეული - 2 ოთახი x 5 PC</div>
         <div class="specs">
-          <div class="sr"><span class="sl2">áá ááªáá¡áá á</span><span class="sv">Intel i5-13400F 4.60GHz</span></div>
-          <div class="sr"><span class="sl2">áááááááá ááá</span><span class="sv">RTX 4060 8GB</span></div>
-          <div class="sr"><span class="sl2">áááá áá¢áá£áá</span><span class="sv">DDR5 16GB 5600MHz</span></div>
-          <div class="sr"><span class="sl2">ááááá¢áá á</span><span class="sv">SAMSUNG 27" 240Hz</span></div>
+          <div class="sr"><span class="sl2">პროცესორი</span><span class="sv">Intel i5-13400F 4.60GHz</span></div>
+          <div class="sr"><span class="sl2">ვიდეობარათი</span><span class="sv">RTX 4060 8GB</span></div>
+          <div class="sr"><span class="sl2">ოპერატიული</span><span class="sv">DDR5 16GB 5600MHz</span></div>
+          <div class="sr"><span class="sl2">მონიტორი</span><span class="sv">SAMSUNG 27" 240Hz</span></div>
           <div class="sr"><span class="sl2">SSD</span><span class="sv">512GB NVMe</span></div>
         </div>
         <div class="pf">
-          <div><div class="pt">3 â¾/á¡á</div><div class="ps">áá áá áááááá</div></div>
-          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('vip_pc')">ááá¯ááá¨áá</button>
+          <div><div class="pt">7 GEL/saat</div><div class="ps">erti adgili</div></div>
+          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('vip_pc')">dajavshne</button>
         </div>
       </div>
       <div class="card">
         <span class="badge bs">STANDARD</span>
         <div class="ct">Standard PC</div>
-        <div class="cm">6 áá ááá£áá â¢ á¡ááá áá á¡ááá áªá</div>
+        <div class="cm">6 erteuli - saerto sivrce</div>
         <div class="specs">
-          <div class="sr"><span class="sl2">áá ááªáá¡áá á</span><span class="sv">Intel i5-12400F</span></div>
-          <div class="sr"><span class="sl2">áááááááá ááá</span><span class="sv">GTX 1660 Super 6GB</span></div>
-          <div class="sr"><span class="sl2">áááá áá¢áá£áá</span><span class="sv">DDR4 16GB</span></div>
-          <div class="sr"><span class="sl2">ááááá¢áá á</span><span class="sv">24" 144Hz</span></div>
+          <div class="sr"><span class="sl2">პროცესორი</span><span class="sv">Intel i5-12400F</span></div>
+          <div class="sr"><span class="sl2">ვიდეობარათი</span><span class="sv">GTX 1660 Super 6GB</span></div>
+          <div class="sr"><span class="sl2">ოპერატიული</span><span class="sv">DDR4 16GB</span></div>
+          <div class="sr"><span class="sl2">მონიტორი</span><span class="sv">24" 144Hz</span></div>
           <div class="sr"><span class="sl2">SSD</span><span class="sv">256GB NVMe</span></div>
         </div>
         <div class="pf">
-          <div><div class="pt">2 â¾/á¡á</div><div class="ps">áá áá áááááá</div></div>
-          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('standard_pc')">ááá¯ááá¨áá</button>
+          <div><div class="pt">5 GEL/saat</div><div class="ps">erti adgili</div></div>
+          <button class="btn-p" style="padding:8px 18px;font-size:12px" onclick="qb('standard_pc')">dajavshne</button>
         </div>
       </div>
     </div>
-    <p style="text-align:center;margin-top:1.5rem;color:var(--muted);font-size:14px">ð® CS2 Â· CS 1.6 Â· Fortnite Â· Dota 2 Â· Valorant Â· PUBG</p>
+    <p style="text-align:center;margin-top:1.5rem;color:var(--muted);font-size:14px">CS2 - CS 1.6 - Fortnite - Dota 2 - Valorant - PUBG</p>
   </div>
 </section>
 
@@ -168,24 +162,24 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
     <h2 class="sec-title">PLAYSTATION <span class="accent">5</span></h2>
     <div class="ps5-grid">
       <div class="card">
-        <div class="ct">á¡ááá áá á¡ááá áªá</div>
+        <div class="ct">saerto sivrce</div>
         <div class="cnt">4 PS5</div>
         <div class="modes">
-          <div class="mode"><div class="mn">1V1</div><div class="mp">6 â¾/á¡á</div></div>
-          <div class="mode"><div class="mn">2Ã2</div><div class="mp">10 â¾/á¡á</div></div>
+          <div class="mode"><div class="mn">1V1</div><div class="mp">5 GEL/h</div></div>
+          <div class="mode"><div class="mn">2x2</div><div class="mp">7 GEL/h</div></div>
         </div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">ð® FIFA 24/25/26 Â· UFC 4 Â· UFC 5 Â· MK Â· GTA 5</p>
-        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_shared')">ááá¯ááá¨áá</button>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">FIFA 24/25/26 - UFC 4 - UFC 5 - MK - GTA 5</p>
+        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_shared')">dajavshne</button>
       </div>
       <div class="card" style="border-color:rgba(0,245,255,.25)">
-        <div class="ct">VIP áááá®á</div>
+        <div class="ct">VIP otaxi</div>
         <div class="cnt" style="background:rgba(0,245,255,.12);color:var(--cyan)">1 PS5 <span style="background:var(--purple);color:#fff;padding:1px 6px;border-radius:3px;font-size:10px;margin-left:4px">VIP</span></div>
         <div class="modes">
-          <div class="mode"><div class="mn">1V1</div><div class="mp">10 â¾/á¡á</div></div>
-          <div class="mode"><div class="mn">2Ã2</div><div class="mp">15 â¾/á¡á</div></div>
+          <div class="mode"><div class="mn">1V1</div><div class="mp">10 GEL/h</div></div>
+          <div class="mode"><div class="mn">2x2</div><div class="mp">15 GEL/h</div></div>
         </div>
-        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">ð® NBA Â· MK Â· UFC 4/5 Â· FIFA 25/26 Â· PES</p>
-        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_vip')">ááá¯ááá¨áá</button>
+        <p style="font-size:13px;color:var(--muted);margin-bottom:1rem">NBA - MK - UFC 4/5 - FIFA 25/26 - PES</p>
+        <button class="btn-p" style="width:100%;padding:10px" onclick="qb('ps5_vip')">dajavshne</button>
       </div>
     </div>
   </div>
@@ -193,70 +187,57 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
 
 <section id="menu">
   <div class="container">
-    <h2 class="sec-title">áá<span class="accent">ááá£</span></h2>
-    <div id="menu-grid" class="menu-grid"><div style="grid-column:1/-1;text-align:center;color:var(--muted)">áá¢ááá áááá...</div></div>
+    <h2 class="sec-title">me<span class="accent">niu</span></h2>
+    <div id="menu-grid" class="menu-grid"><div style="grid-column:1/-1;text-align:center;color:var(--muted)">loading...</div></div>
   </div>
 </section>
 
 <section id="booking" style="background:var(--dark2)">
   <div class="container">
-    <h2 class="sec-title">áááááá <span class="accent">á¯ááá¨ááá</span></h2>
-    <div class="booking-wrap">
+    <h2 class="sec-title">online <span class="accent">javshani</span></h2>
+    <div class="bwrap">
       <div class="bcard" id="bform">
         <div class="fr">
-          <div class="fg"><label>á¡áá®ááá</label><input id="bn" placeholder="á¨ááá á¡áá®ááá"></div>
-          <div class="fg"><label>á¢áááá¤ááá</label><input id="bp" placeholder="+995 5XX XX XX XX"></div>
+          <div class="fg"><label>saxeli</label><input id="bn" placeholder="sheni saxeli"></div>
+          <div class="fg"><label>telefoni</label><input id="bp" placeholder="+995 5XX XX XX XX"></div>
         </div>
-        <div class="fg"><label>á¢ááá</label>
+        <div class="fg"><label>tipi</label>
           <select id="bt" onchange="upd()">
-            <option value="">ááá á©áá...</option>
-            <option value="vip_pc">VIP áááááá£á¢áá á â 3 â¾/á¡á</option>
-            <option value="standard_pc">Standard PC â 2 â¾/á¡á</option>
-            <option value="ps5_shared">PS5 á¡ááá áá á¡ááá áªá</option>
-            <option value="ps5_vip">PS5 VIP áááá®á</option>
+            <option value="">airchie...</option>
+            <option value="vip_pc">VIP kompiuteri - 7 GEL/h</option>
+            <option value="standard_pc">Standard PC - 5 GEL/h</option>
+            <option value="ps5_shared">PS5 saerto sivrce</option>
+            <option value="ps5_vip">PS5 VIP otaxi</option>
           </select>
         </div>
-        <div class="fg" id="mg" style="display:none"><label>á ááááá</label>
-          <select id="bm" onchange="upd()"><option value="1v1">1V1</option><option value="2x2">2Ã2</option></select>
+        <div class="fg" id="mg" style="display:none"><label>rejimi</label>
+          <select id="bm" onchange="upd()"><option value="1v1">1V1</option><option value="2x2">2x2</option></select>
         </div>
         <div class="fr">
-          <div class="fg"><label>ááá áá¦á</label><input type="date" id="bd" onchange="upd()"></div>
-          <div class="fg"><label>ááá¬á§ááá</label><input type="time" id="bti" onchange="upd()"></div>
+          <div class="fg"><label>tarixi</label><input type="date" id="bd" onchange="upd()"></div>
+          <div class="fg"><label>dawqeba</label><input type="time" id="bti" onchange="upd()"></div>
         </div>
-        <div class="fg"><label>á¡áááááá</label>
+        <div class="fg"><label>saatebi</label>
           <select id="bh" onchange="upd()">
-            <option value="1">1 á¡áááá</option><option value="2">2 á¡áááá</option>
-            <option value="3">3 á¡áááá</option><option value="4">4 á¡áááá</option>
-            <option value="5">5 á¡áááá</option><option value="6">6 á¡áááá</option>
+            <option value="1">1 saati</option><option value="2">2 saati</option>
+            <option value="3">3 saati</option><option value="4">4 saati</option>
+            <option value="5">5 saati</option><option value="6">6 saati</option>
           </select>
         </div>
         <div class="psum" id="ps2" style="display:none">
-          <div class="pr"><span>á¢ááá</span><span id="pst">â</span></div>
-          <div class="pr"><span>áá á</span><span id="psd">â</span></div>
-          <div class="pr"><span>á®áááá á«áááááá</span><span id="psh">â</span></div>
-          <div class="ptot"><span>á¡á£á</span><span class="am" id="psa">0 â¾</span></div>
+          <div class="pr2"><span>tipi</span><span id="pst">-</span></div>
+          <div class="pr2"><span>dro</span><span id="psd">-</span></div>
+          <div class="pr2"><span>xangrdzlivoba</span><span id="psh">-</span></div>
+          <div class="ptot"><span>sul</span><span class="am" id="psa">0 GEL</span></div>
         </div>
-        <div style="margin-bottom:1rem">
-          <label style="display:block;font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--muted);margin-bottom:8px">ááááá®áá</label>
-          <div class="popts">
-            <label class="popt sel" id="pc2"><input type="radio" name="pay" value="card" checked>
-              <div class="pi">ð³</div><div class="pl">ááá ááá</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">ááá¢á ááááá¡á¢á£á ááá</div>
-            </label>
-            <label class="popt" id="pca"><input type="radio" name="pay" value="cash">
-              <div class="pi">ðµ</div><div class="pl">ááá¦áá</div>
-              <div style="font-size:11px;color:var(--muted);margin-top:2px">ááááááá ááááá®áá</div>
-            </label>
-          </div>
-        </div>
-        <button class="sub-btn" onclick="sub()">ááá¯ááá¨áá áá®áááá</button>
+        <button class="sub-btn" onclick="sub()">dajavshne axlave</button>
       </div>
       <div class="succ" id="succ">
-        <div class="si">â</div>
-        <h3 style="font-family:'Orbitron',sans-serif;font-size:1.5rem">á¯ááá¨ááá ááááá¡á¢á£á áá!</h3>
+        <div class="si">checkmark</div>
+        <h3 style="font-family:'Orbitron',sans-serif;font-size:1.5rem">javshani dadasturebulia!</h3>
         <div class="sref" id="sref"></div>
-        <p style="color:var(--muted);margin-top:1rem">á¨ááááá®á áá¡ áááá!</p>
-        <button class="btn-o" style="margin-top:1.5rem" onclick="rst()">áá®ááá á¯ááá¨ááá</button>
+        <p style="color:var(--muted);margin-top:1rem">sheinaxe es kodi!</p>
+        <button class="btn-o" style="margin-top:1.5rem" onclick="rst()">axali javshani</button>
       </div>
     </div>
   </div>
@@ -264,31 +245,30 @@ footer{background:var(--dark2);border-top:1px solid rgba(0,245,255,.1);text-alig
 
 <section id="contact">
   <div class="container">
-    <h2 class="sec-title">ááá<span class="accent">á¢áá¥á¢á</span></h2>
+    <h2 class="sec-title">kon<span class="accent">taqti</span></h2>
     <div class="contact-grid">
-      <div class="cc"><div class="ci">ð</div><div class="cl">á¢áááá¤ááá</div><div class="cv">+995 598 32 71 27</div></div>
-      <div class="cc"><div class="ci">ð</div><div class="cl">ááá¡áááá áá</div><div class="cv">134 Pushkin St, Batumi</div></div>
-      <div class="cc"><div class="ci">ð</div><div class="cl">á¡ááá£á¨áá á¡áááááá</div><div class="cv">10:00 â 02:00</div></div>
+      <div class="cc"><div class="ci">tel</div><div class="cl">telefoni</div><div class="cv">+995 598 32 71 27</div></div>
+      <div class="cc"><div class="ci">loc</div><div class="cl">misamarti</div><div class="cv">134 Pushkin St, Batumi</div></div>
+      <div class="cc"><div class="ci">time</div><div class="cl">samushaо saatebi</div><div class="cv">10:00 - 02:00</div></div>
     </div>
   </div>
 </section>
 
-<footer>Â© 2025 GoodGame Cyber Club Â· Batumi</footer>
+<footer>2025 GoodGame Cyber Club - Batumi</footer>
 <div class="notif" id="notif"></div>
 
 <script>
-const P={vip_pc:{n:'VIP áááááá£á¢áá á','1v1':3},standard_pc:{n:'Standard PC','1v1':2},ps5_shared:{n:'PS5 á¡ááá áá','1v1':6,'2x2':10},ps5_vip:{n:'PS5 VIP','1v1':10,'2x2':15}};
+const P={vip_pc:{n:'VIP PC','1v1':7},standard_pc:{n:'Standard PC','1v1':5},ps5_shared:{n:'PS5 saerto','1v1':5,'2x2':7},ps5_vip:{n:'PS5 VIP','1v1':10,'2x2':15}};
 document.getElementById('bd').value=new Date().toISOString().split('T')[0];
 document.getElementById('bti').value='12:00';
 async function loadMenu(){
   try{
     const r=await fetch('/api/menu');const items=await r.json();
     const cats={};items.forEach(i=>{if(!cats[i.category])cats[i.category]=[];cats[i.category].push(i);});
-    document.getElementById('menu-grid').innerHTML=Object.entries(cats).map(([c,is])=>'<div class="mc2"><div class="mct">'+c+'</div>'+is.map(i=>'<div class="mi"><span>'+i.name+'</span><span class="mip">'+i.price.toFixed(2)+' â¾</span></div>').join('')+'</div>').join('');
-  }catch(e){document.getElementById('menu-grid').innerHTML='<div style="color:var(--muted);text-align:center">ááá  á©ááá¢ááá áá</div>';}
+    document.getElementById('menu-grid').innerHTML=Object.entries(cats).map(([c,is])=>'<div class="mc2"><div class="mct">'+c+'</div>'+is.map(i=>'<div class="mi"><span>'+i.name+'</span><span class="mip">'+i.price.toFixed(2)+' GEL</span></div>').join('')+'</div>').join('');
+  }catch(e){document.getElementById('menu-grid').innerHTML='<div style="color:var(--muted);text-align:center">ver chaitvirtha</div>';}
 }
 loadMenu();
-document.querySelectorAll('.popt').forEach(el=>el.addEventListener('click',()=>{document.querySelectorAll('.popt').forEach(e=>e.classList.remove('sel'));el.classList.add('sel');}));
 function upd(){
   const t=document.getElementById('bt').value,h=parseInt(document.getElementById('bh').value);
   const d=document.getElementById('bd').value,ti=document.getElementById('bti').value;
@@ -298,9 +278,9 @@ function upd(){
   const m=ps?document.getElementById('bm').value:'1v1';
   const pr=P[t],pph=pr[m]||pr['1v1'],tot=pph*h;
   document.getElementById('pst').textContent=pr.n+(ps?' ('+m+')':'');
-  document.getElementById('psd').textContent=d&&ti?d+' '+ti:'â';
-  document.getElementById('psh').textContent=h+' á¡áááá Ã '+pph+' â¾';
-  document.getElementById('psa').textContent=tot+' â¾';
+  document.getElementById('psd').textContent=d&&ti?d+' '+ti:'-';
+  document.getElementById('psh').textContent=h+' saati x '+pph+' GEL';
+  document.getElementById('psa').textContent=tot+' GEL';
   document.getElementById('ps2').style.display='block';
 }
 function goto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
@@ -308,28 +288,21 @@ function qb(t){document.getElementById('bt').value=t;upd();goto('booking');}
 async function sub(){
   const n=document.getElementById('bn').value.trim(),p=document.getElementById('bp').value.trim();
   const t=document.getElementById('bt').value,d=document.getElementById('bd').value,ti=document.getElementById('bti').value;
-  const h=document.getElementById('bh').value,pay=document.querySelector('input[name="pay"]:checked').value;
+  const h=document.getElementById('bh').value;
   const ps=t==='ps5_shared'||t==='ps5_vip',m=ps?document.getElementById('bm').value:'1v1';
-  if(!n||!p||!t||!d||!ti){ntf('á¨áááá¡á á§áááá áááá!','err');return;}
-  const btn=document.querySelector('.sub-btn');btn.disabled=true;btn.textContent='áá£á¨áááááá...';
-  const body={customer_name:n,customer_phone:p,station_type:t,mode:m,start_time:d+' '+ti,hours:parseInt(h),payment_method:pay};
+  if(!n||!p||!t||!d||!ti){ntf('sheavshe yvela veli!','err');return;}
+  const btn=document.querySelector('.sub-btn');btn.disabled=true;btn.textContent='muSavdeba...';
+  const body={customer_name:n,customer_phone:p,station_type:t,mode:m,start_time:d+' '+ti,hours:parseInt(h),payment_method:'card'};
   try{
-    if(pay==='card'){
-      const r=await fetch('/api/bookings/stripe-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-      const data=await r.json();
-      if(data.url)window.location.href=data.url;
-      else ntf(data.error||'á¨ááªáááá','err');
-    }else{
-      const r=await fetch('/api/bookings/create',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
-      const data=await r.json();
-      if(data.success){document.getElementById('bform').style.display='none';document.getElementById('succ').style.display='block';document.getElementById('sref').textContent=data.booking_ref;}
-      else ntf(data.error||'á¨ááªáááá','err');
-    }
-  }catch(e){ntf('á¡áá ááá áá¡ á¨ááªáááá','err');}
-  btn.disabled=false;btn.textContent='ááá¯ááá¨áá áá®áááá';
+    const r=await fetch('/api/bookings/stripe-checkout',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});
+    const data=await r.json();
+    if(data.url)window.location.href=data.url;
+    else ntf(data.error||'shecdoma','err');
+  }catch(e){ntf('serveris shecdoma','err');}
+  btn.disabled=false;btn.textContent='dajavshne axlave';
 }
 function rst(){document.getElementById('bform').style.display='block';document.getElementById('succ').style.display='none';}
-function ntf(msg,type=''){const n=document.getElementById('notif');n.textContent=msg;n.className='notif '+(type==='err'?'err':'')+' show';setTimeout(()=>n.classList.remove('show'),3500);}
+function ntf(msg,type){const n=document.getElementById('notif');n.textContent=msg;n.className='notif '+(type==='err'?'err':'')+' show';setTimeout(()=>n.classList.remove('show'),3500);}
 if(window.location.pathname==='/booking-success'){
   const ref=new URLSearchParams(window.location.search).get('ref');
   if(ref){goto('booking');document.getElementById('bform').style.display='none';document.getElementById('succ').style.display='block';document.getElementById('sref').textContent=ref;}
