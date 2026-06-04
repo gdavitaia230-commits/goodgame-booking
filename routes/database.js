@@ -16,7 +16,7 @@ async function init() {
   if (parseInt(sc.rows[0].c) === 0) {
     for(let i=1;i<=10;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['VIP PC #'+i,'vip_pc',i]);
     for(let i=1;i<=6;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['Standard PC #'+i,'standard_pc',i]);
-    for(let i=1;i<=4;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 á¡ááá áá #'+i,'ps5_shared',i]);
+    for(let i=1;i<=4;i++) await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ Ã¡ÂÂÃ¡ÂÂ #'+i,'ps5_shared',i]);
     await pool.query('INSERT INTO stations (name,type,number) VALUES ($1,$2,$3)',['PS5 VIP','ps5_vip',1]);
   }
   const pc = await pool.query('SELECT COUNT(*) as c FROM prices');
@@ -26,7 +26,7 @@ async function init() {
   }
   const mc = await pool.query('SELECT COUNT(*) as c FROM menu_items');
   if (parseInt(mc.rows[0].c) === 0) {
-    for(const i of [['á¡áá¡áááá','á¬á§ááá',1],['á¡áá¡áááá','ááá¢áá á',4],['á¡áá¡áááá','Doritos áááá',6],['á¡áá¡áááá','Doritos ááá¢áá á',4],['á¡áá¡áááá','ááá¤áá¡áá®ááá',3.5],['á¡áá¡áááá','7DAYS áá á£áá¡ááá',6],['ááááá°ááá','Martin Rosso',10],['ááááá°ááá','Malibu',10],['ááááá°ááá','Compari',10],['ááááá°ááá','Cointreau',10],['ááááá°ááá','JÃ¤germeister',10],['áá£áá','Heineken 0.5',9],['áá£áá','Heineken 0.3',7],['áá£áá','á¥áá áá 0.5',6],['Fast Food','á¢áá¡á¢á',4],['Fast Food','á¢áá¡á¢á áá áááá',6]])
+    for(const i of [['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Ã¡ÂÂ¬Ã¡ÂÂ§Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ',1],['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ¢Ã¡ÂÂÃ¡ÂÂ Ã¡ÂÂ',4],['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Doritos Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ',6],['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Doritos Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ¢Ã¡ÂÂÃ¡ÂÂ Ã¡ÂÂ',4],['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ¤Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ®Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ',3.5],['Ã¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ','7DAYS Ã¡ÂÂÃ¡ÂÂ Ã¡ÂÂ£Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ',6],['Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ°Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Martin Rosso',10],['Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ°Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Malibu',10],['Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ°Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Compari',10],['Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ°Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ','Cointreau',10],['Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ°Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂ','JÃÂ¤germeister',10],['Ã¡ÂÂÃ¡ÂÂ£Ã¡ÂÂÃ¡ÂÂ','Heineken 0.5',9],['Ã¡ÂÂÃ¡ÂÂ£Ã¡ÂÂÃ¡ÂÂ','Heineken 0.3',7],['Ã¡ÂÂÃ¡ÂÂ£Ã¡ÂÂÃ¡ÂÂ','Ã¡ÂÂ¥Ã¡ÂÂÃ¡ÂÂ Ã¡ÂÂÃ¡ÂÂ 0.5',6],['Fast Food','Ã¡ÂÂ¢Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂ¢Ã¡ÂÂ',4],['Fast Food','Ã¡ÂÂ¢Ã¡ÂÂÃ¡ÂÂ¡Ã¡ÂÂ¢Ã¡ÂÂ Ã¡ÂÂÃ¡ÂÂ Ã¡ÂÂÃ¡ÂÂÃ¡ÂÂÃ¡ÂÂ',6]])
       await pool.query('INSERT INTO menu_items (category,name,price) VALUES ($1,$2,$3)',i);
   }
   const stc = await pool.query('SELECT COUNT(*) as c FROM settings');
@@ -34,6 +34,8 @@ async function init() {
     await pool.query("INSERT INTO settings (key,value) VALUES ('open_time','10:00'),('close_time','02:00'),('address','134 Pushkin St, Batumi'),('phone','+995 598 32 71 27')");
 }
 // Fix prices if wrong
+pool.query("UPDATE prices SET price_per_hour=5 WHERE station_type='ps5_shared' AND mode='1v1'").catch(()=>{});
+pool.query("UPDATE prices SET price_per_hour=7 WHERE station_type='ps5_shared' AND mode='2x2'").catch(()=>{});
 pool.query("UPDATE prices SET price_per_hour=7 WHERE station_type='vip_pc' AND mode='1v1'").catch(()=>{});
 pool.query("UPDATE prices SET price_per_hour=5 WHERE station_type='standard_pc' AND mode='1v1'").catch(()=>{});
 init().catch(console.error);
